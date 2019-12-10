@@ -1,7 +1,6 @@
 // Mise en place système. 
 const Discord = require('discord.js');
 const bot = new Discord.Client();
-const token = 'NjUzNjg2MzgyNjE4ODY5NzYw.Xe6tcw.Ajc5Duo9o7sHEFdnL3E6UnLIgfo';
 const PREFIX = '!';
 
 // Liste des participants, noms et primes. 

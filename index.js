@@ -40,15 +40,15 @@ bot.on('message', message=>{
 
     let args = message.content.substring(PREFIX.length).split(" ");
 
-    for (let i = 0; i < Membres.length; i++) {
-        if (Membres[i][1]==100000){
-            let memberRole = message.member.roles.find("Pirate");
-            message.guild.get_member("my id").addRole(memberRole);
+    //for (let i = 0; i < Membres.length; i++) {
+        //if (Membres[i][1]==100000){
+            //let memberRole = message.member.roles.find("Pirate");
+            //message.guild.get_member("my id").addRole(memberRole);
             //message.channel.sendMessage("Félicitations tu deviens pirate !");
             //let memberRole = member.guild.roles.find(Pirate);
             //message.server.get_member("391581984956350465").addRole(memberRole);
-        }
-    }
+        //}
+    //}
 
     switch(args[0]){
         case 'supprime':

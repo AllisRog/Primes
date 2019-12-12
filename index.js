@@ -44,6 +44,7 @@ bot.on('message', message=>{
     let args = message.content.substring(PREFIX.length).split(" ");
     function assignRole(member2, roleName){
         member2.setRoles(["654738611274776576", roleName]);
+        message.channel.sendMessage("I'm here !");
         return member2;
     }
     function level(Membres){

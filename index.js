@@ -93,8 +93,6 @@ bot.on('message', message=>{
             } 
             break;
         case 'primes':
-            const member_u = message.guild.members.get("391581984956350465");
-            member_u.addRole("name", "Membre");
             message.channel.sendMessage(primes(Membres));
             break;
         case 'membres':

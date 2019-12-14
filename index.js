@@ -50,9 +50,9 @@ bot.on('message', message=>{
             for (let index_sub = 0; index_sub < Membres.length; index_sub++) {
                 if (Membres[index][1] < Roles_index[index_sub+1] && Membres[index][1] > Roles_index[index_sub])
                     {
-                       if (!member1.roles.has(Roles[index_sub][1])){
+                        if (!member1.roles.has(Roles[index_sub][1])){
                             assignRole(member1, Roles[index_sub][1]);
-                            message.channel.sendMessage(Membres[index][0] + " est devenu " + Roles[index_sub][0]);
+                            message.channel.sendMessage("<@" + Membres[index][2] + ">" + ", tu es devenu " + Roles[index_sub][0]);
                         }
                 }
                 
@@ -81,6 +81,9 @@ bot.on('message', message=>{
             for (let index = 0; index < Membres.length; index++) {
                 if (args[1] == Membres[index][0]){
                     message.channel.sendMessage('La prime de '+ Membres[index][0] + ' est de ' + Membres[index][1] + ' berrys.');
+                }
+                if (message.member.id == Membres[index][2]){
+                    message.channel.sendMessage("<@" + Membres[index][2] + ">" + ', ta prime est de ' + Membres[index][1] + ' berrys.');
                 }
             }    
         break;

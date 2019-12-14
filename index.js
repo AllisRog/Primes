@@ -95,11 +95,11 @@ bot.on('message', message=>{
                 if (args[1] == "tous"){
                     switch (args[2]){
                         case "+":
+                            message.channel.sendMessage("Augmentation ! Tous le monde augmente sa prime de " + args[3] + " Berrys ! ");
                             for (let index = 0; index < Membres.length; index++) {
-                                Membres[index][1] += parseInt(args[3]);
-                                message.channel.sendMessage("Augmentation ! Tous le monde augmente sa prime de " + args[3] + " Berrys ! ");
-                                checkRoles(Membres)
+                                Membres[index][1] += parseInt(args[3]);                                
                             }
+                            checkRoles(Membres);
                 }
             }
             for (let oudex  = 0; oudex < Membres.length; oudex++) {

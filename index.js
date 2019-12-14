@@ -12,6 +12,9 @@ Membres = [["ener", 273000, "443703085253132288"], ["zoro", 179000, "65294053325
 ["alvida", 50000, "653621701359173672"],["sanji", 75000, "653603212963741706"], 
 ["benbeckman", 58325, "480006189070155787"], ["pedro", 0, "269890311029915648"],
 ["usopp", 0, "573111845666291714"]];
+Membres.sort(function(a,b){
+    return b[1]-a[1]
+});
 var Liste_primes = "";
 var Liste = ""
 Roles = [["Esclave", "653974762590044162"], ["Brigand", "653625434285539358"], 
@@ -90,6 +93,34 @@ bot.on('message', message=>{
         case 'modification':
             if(!message.guild.members.get("391581984956350465")) return message.channel.send("Tu n'as pas vraiment le droit de faire ça...")
             for (let oudex  = 0; oudex < Membres.length; oudex++) {
+                if (args[1] == "tous"){
+                    switch (args[2]){
+                        case "+":
+                            Membres[oudex][1] = Membres[oudex][1] + parseInt(args[3]);
+                            message.channel.sendMessage("Augmentation ! Tous le monde augmente sa prime de " + args[3]);
+                            checkRoles(Membres)
+                            return Membres[oudex][1]
+                            break;
+                        case "-":
+                            Membres[oudex][1] = Membres[oudex][1] - parseInt(args[3]);
+                            message.channel.sendMessage("Diminution ! Tous le monde diminue sa prime de " + args[3]);
+                            checkRoles(Membres)
+                            return Membres[oudex][1]
+                            break;
+                        case "*":
+                            Membres[oudex][1] = Membres[oudex][1] * parseInt(args[3]);
+                            message.channel.sendMessage("Multiplication ! Tous le monde voit sa prime multiplée par " + args[3]);
+                            checkRoles(Membres)
+                            return Membres[oudex][1]
+                            break;
+                        case "=":
+                            Membres[oudex][1] = parseInt(args[3]);
+                            message.channel.sendMessage("Assignation ! Tous le monde a une prime de " + args[3]);
+                            checkRoles(Membres)
+                            return Membres[oudex][1]
+                            break;    
+                }
+            }
                 if (args[1] == Membres[oudex][0]){
                     switch (args[2]){
                         case "+":

@@ -100,6 +100,12 @@ bot.on('message', message=>{
                                 Membres[index][1] += parseInt(args[3]);                                
                             }
                             checkRoles(Membres);
+                        case "-":
+                            message.channel.sendMessage("Diminution ! Tous le monde a sa prime diminuée de " + args[3] + " Berrys ! ");
+                            for (let index = 0; index < Membres.length; index++) {
+                                Membres[index][1] -= parseInt(args[3]);                                
+                            }
+                            checkRoles(Membres);    
                 }
             }
             for (let oudex  = 0; oudex < Membres.length; oudex++) {

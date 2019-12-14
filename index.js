@@ -100,7 +100,6 @@ bot.on('message', message=>{
                                 message.channel.sendMessage("Augmentation ! Tous le monde augmente sa prime de " + args[3] + " Berrys ! ");
                                 checkRoles(Membres)
                             }
-                            return Membres[index][1];
                 }
             }
             for (let oudex  = 0; oudex < Membres.length; oudex++) {

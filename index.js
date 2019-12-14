@@ -50,9 +50,9 @@ bot.on('message', message=>{
             for (let index_sub = 0; index_sub < Membres.length; index_sub++) {
                 if (Membres[index][1] < Roles_index[index_sub+1] && Membres[index][1] > Roles_index[index_sub])
                     {
-                        if (!member1.roles.find("name", Roles[index_sub+1][0])){
+                       if (!member1.roles.has(Roles[index_sub][1])){
                             assignRole(member1, Roles[index_sub][1]);
-                            message.channel.sendMessage(Membres[index][0] + " est devenu un " + Roles[index_sub][0]);
+                            message.channel.sendMessage(Membres[index][0] + " est devenu " + Roles[index_sub][0]);
                         }
                 }
                 

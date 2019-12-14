@@ -91,17 +91,16 @@ bot.on('message', message=>{
             }    
         break;
         case 'modification':
-            if(!message.guild.members.get("391581984956350465")) return message.channel.send("Tu n'as pas vraiment le droit de faire ça...")
+                if(!message.guild.members.get("391581984956350465")) return message.channel.send("Tu n'as pas vraiment le droit de faire ça...")
                 if (args[1] == "tous"){
                     switch (args[2]){
                         case "+":
                             for (let index = 0; index < Membres.length; index++) {
-                                Membres[index][1] = Membres[index][1] + parseInt(args[3]);
-                                message.channel.sendMessage("Augmentation ! Tous le monde augmente sa prime de " + args[3]);
+                                Membres[index][1] += parseInt(args[3]);
+                                message.channel.sendMessage("Augmentation ! Tous le monde augmente sa prime de " + args[3] + " Berrys ! ");
                                 checkRoles(Membres)
-                                return Membres[index][1]
-                                break; 
                             }
+                            return Membres[index][1];
                 }
             }
             for (let oudex  = 0; oudex < Membres.length; oudex++) {

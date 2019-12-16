@@ -70,7 +70,7 @@ bot.on('message', message=>{
                     if (args[2]!=null && parseInt(args[2]) > 0 && Membres[index][2] != message.member.id){
                         for (let index_2 = 0; index_2 < Membres.length; index_2++) {
                             if (message.member.id == Membres[index_2][2]){
-                                if (parseInt(args[2])<Membres[index_2][2]){
+                                if (parseInt(args[2])<Membres[index_2][1]){
                                     Membres[index_2][1] =  Membres[index_2][1] - parseInt(args[2]);
                                     message.channel.sendMessage("Tu as perdu de l'argent");
                                     break;

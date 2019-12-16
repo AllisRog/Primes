@@ -69,7 +69,7 @@ bot.on('message', message=>{
                 if (args[1] == Membres[index][0]){
                     if (args[2]!=null && parseInt(args[2]) > 0 && Membres[index][2] != message.member.id){
                         for (let index_2 = 0; index_2 < Membres.length; index_2++) {
-                            if (message.member.id = Membres[index_2][2]){
+                            if (message.member.id == Membres[index_2][2]){
                                 Membres[index_2][1] =  Membres[index_2][1] - parseInt(args[2]);
                             }  
                         }
@@ -81,7 +81,7 @@ bot.on('message', message=>{
                     break;
                 }
             }
-            break;    
+            break;   
         case 'supprime':
             if(!args[1]) return message.reply('Erreur. Définissez le nombre de messages à supprimer (en comptant le votre).')
             if (args[1]<=100){

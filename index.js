@@ -64,6 +64,28 @@ bot.on('message', message=>{
     }
 
     switch(args[0]){
+        case 'transfert':
+            for (let index = 0; index < Membres.length; index++) {
+                if (args[1] == Membres[index][0]){
+                    if (args[2]!=null && args[2] <= Membres[index][1] && parseInt(args[2]) > 0 && Membres[index][2] != message.member.id){
+                        for (let index_2 = 0; index_2 < Membres.length; index_2++) {
+                            if (message.member.id = Membres[index_2][0]){
+                                Membres[index_2][1] =  Membres[index_2][1] - parseInt(args[2]);
+                            }  
+                        }
+                        if (args[1]==Membres[index][0]){
+                            Membres[index][1] = Membres[index][1] + parseInt(args[2]);
+                        }else{
+                            message.channel.sendMessage("Bien tenté. Vous ne pouvez pas vous transférer à vous-même.");
+                        }
+                    }else{
+                        message.channel.sendMessage("Précisez la valeur à transférer. Celle entrée est incorrecte. (doit être supérieure à zero, et inférieure à vos Berrys)");
+                        break;
+                    }
+                    break;
+                }
+            }
+            break;    
         case 'supprime':
             if(!args[1]) return message.reply('Erreur. Définissez le nombre de messages à supprimer (en comptant le votre).')
             if (args[1]<=100){

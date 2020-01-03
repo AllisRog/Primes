@@ -317,7 +317,7 @@ bot.on('message', message=>{
                 break;
                 case "vire":
                     var arg = message.author.id;
-                    if (message.member.roles.has(Roles[3][1]){
+                    if (message.member.roles.has(Roles[3][1])){
                         for (let index = 0; index < Membres.length; index++) {
                             if (args[2] == Membres[index][0]){
                                 for (let index_1 = 0; index_1 < Membres.length; index_1++) {

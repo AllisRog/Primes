@@ -243,7 +243,7 @@ bot.on('message', message=>{
                     } 
                 }if (!args[1]){
                     printInfo("reply", "Précise le nom de ton équipage dans ta commande.")
-                }if (args[1]){
+                }if (args[1] && !message.member.roles.has(Roles[3][1])){
                     printInfo("reply", "Commencez par devenir Capitaine ou supérieur afin de faire ça.")
                 }
             }

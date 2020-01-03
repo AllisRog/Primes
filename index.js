@@ -116,29 +116,27 @@ bot.on('message', message=>{
     }
     function isCapable(Membres){
         var valid = false;
-        for (let _7 = 0; _7 < Membres.length; _7++) {
-            //const memberId = message.guild.member.get(Membres[_7][2]);
-            switch (message.member.roles){
-                case message.member.roles.has(Roles[3][1]):
-                    valid = true;
-                    break;
-                case message.member.roles.has(Roles[4][1]):
-                    valid = true;
-                    break;  
-                case message.member.roles.has(Roles[5][1]):
-                    valid = true;
-                    break;
-                case message.member.roles.has(Roles[6][1]):
-                    valid = true;
-                    break;
-                case message.member.roles.has(Roles[7][1]):
-                    valid = true;
-                    break;   
-                default:
-                    valid = false;         
+        //const memberId = message.guild.member.get(Membres[_7][2]);
+        switch (message.guild.member.roles){
+            case message.guild.member.roles.has(Roles[3][1]):
+                valid = true;
+                break;
+            case message.guild.member.roles.has(Roles[4][1]):
+                valid = true;
+                break;  
+            case message.guild.member.roles.has(Roles[5][1]):
+                valid = true;
+                break;
+            case message.guild.member.roles.has(Roles[6][1]):
+                valid = true;
+                break;
+            case message.guild.member.roles.has(Roles[7][1]):
+                valid = true;
+                break;   
+            default:
+                valid = false;         
             }
-        }
-        console.log(valid);
+        console.lod(valid);
         return valid;
     }
     // Fonction checkRoles : Permet de changer le rôle d'un utilisateur en fonction de sa prime.

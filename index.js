@@ -114,29 +114,29 @@ bot.on('message', message=>{
         }
         return valid_2;
     }
-    function isCapable(){
+    function isCapable(ID){
         var valid = false;
         //const memberId = message.guild.member.get(Membres[_7][2]);
-        switch (message.member.roles){
-            case message.member.roles.has(Roles[3][1]):
+        switch (ID){
+            case ID.has(Roles[3][1]):
                 valid = true;
                 break;
-            case message.member.roles.has(Roles[4][1]):
+            case ID.has(Roles[4][1]):
                 valid = true;
                 break;  
-            case message.member.roles.has(Roles[5][1]):
+            case ID.has(Roles[5][1]):
                 valid = true;
                 break;
-            case message.member.roles.has(Roles[6][1]):
+            case ID.has(Roles[6][1]):
                 valid = true;
                 break;
-            case message.member.roles.has(Roles[7][1]):
+            case ID.has(Roles[7][1]):
                 valid = true;
                 break;   
             default:
                 valid = false;         
             }
-        console.log(valid);
+        
         return valid;
     }
     // Fonction checkRoles : Permet de changer le rôle d'un utilisateur en fonction de sa prime.
@@ -161,7 +161,7 @@ bot.on('message', message=>{
         var Msgfinal = "";
         var MsgfinalPirates = "";
         if (Membres[position][3]!=""){
-            if(isCapable()){
+            if(isCapable(message.guild.member.roles)){
                 updPrize = prize / 2;
                 Membres[position][1] = Membres[position][1] + updPrize;
                 Msgfinal += "Augmentation ! la prime de " + Membres[position][0]+ " est désormais de " + Membres[position][1] + " Berrys !\n";
@@ -199,7 +199,7 @@ bot.on('message', message=>{
         // Fonctionnalité Equipage : Permet de créer un équipage et de diviser la prime reçue. 
         case 'equipage':
             Msg = "";
-            if (isCapable()){
+            if (isCapable(message.guild.member.roles)){
                 if (args[1] && args[1] != "quitte"){
                     for (let index = 0; index < Membres.length; index++) {
                         if (Membres[index][2]==message.member.id){
@@ -246,7 +246,7 @@ bot.on('message', message=>{
             }
             switch(args[1]){
                 case "change":
-                    if (isCapable()){
+                    if (isCapable(message.guild.member.roles)){
                         for (let index = 0; index < Membres.length; index++) {
                             if (message.member.id == Membres[index][2]){
                                 if (args[2]){
@@ -272,7 +272,7 @@ bot.on('message', message=>{
                         if (message.member.id == Membres[index][2]){
                             for (let _3 = 0; _3 < Membres.length; _3++) {
                                 //const member1 = message.guild.members.get(Membres[_3][2]);
-                                if (!isCapable()){
+                                if (!isCapable(message.guild.member.roles)){
                                     if (Membres[index][3]!=""){
                                         printInfo("simple", Membres[index][0] + " a quitté l'équipage " + Membres[index][3] +".");
                                         if (!hasCaptain(Membres, Membres[index][3])) {
@@ -308,7 +308,7 @@ bot.on('message', message=>{
                     }
                 break;
                 case "vire":
-                    if (isCapable()){
+                    if (isCapable(message.guild.member.roles)){
                         for (let index = 0; index < Membres.length; index++) {
                             if (args[2] == Membres[index][0]){
                                 for (let index_1 = 0; index_1 < Membres.length; index_1++) {

@@ -114,6 +114,11 @@ bot.on('message', message=>{
         }
         return valid_2;
     }
+    function hasRole(){
+        if (message.member.roles.has(Roles[3][1])){
+            return true;
+        }
+    }
     function isCapable(ID){
         var valid = false;
         //const memberId = message.guild.member.get(Membres[_7][2]);
@@ -200,9 +205,7 @@ bot.on('message', message=>{
         case 'equipage':
             Msg = "";
             var arg = message.author.id;
-            console.log("step one");
-            if (message.member.roles.has(Roles[3][1])){
-                 console.log("step txo");
+            if (hasRole()){
                 if (args[1] && args[1] != "quitte"){
                     for (let index = 0; index < Membres.length; index++) {
                         if (Membres[index][2]==message.member.id){
@@ -243,7 +246,7 @@ bot.on('message', message=>{
                     } 
                 }if (!args[1]){
                     printInfo("reply", "Précise le nom de ton équipage dans ta commande.")
-                }if (args[1] && !message.member.roles.has(Roles[3][1])){
+                }if (args[1]){
                     printInfo("reply", "Commencez par devenir Capitaine ou supérieur afin de faire ça.")
                 }
             }
@@ -314,7 +317,7 @@ bot.on('message', message=>{
                 break;
                 case "vire":
                     var arg = message.author.id;
-                    if (message.member.roles.has(Roles[3][1])){
+                    if (message.member.roles.has(Roles[3][1]){
                         for (let index = 0; index < Membres.length; index++) {
                             if (args[2] == Membres[index][0]){
                                 for (let index_1 = 0; index_1 < Membres.length; index_1++) {

@@ -201,6 +201,7 @@ bot.on('message', message=>{
         case 'equipage':
             Msg = "";
             if (isCapable(Membres)){
+                console.log("Tu est capable !");
                 if (args[1] && args[1] != "quitte"){
                     for (let index = 0; index < Membres.length; index++) {
                         if (Membres[index][2]==message.member.id){

@@ -183,12 +183,13 @@ bot.on('message', message=>{
                         Membres[_6][1] = Membres[_6][1] + finalprize;
                         MsgfinalPirates += "Augmentation ! la prime de " + Membres[_6][0]+ " est désormais de " + Membres[_6][1] + " Berrys !\n";
                     }
+                    return Membres[_6][1];
                 }
             }
             checkRoles(Membres);
             printInfo("simple", Msgfinal);
             printInfo("simple", MsgfinalPirates);
-            return Membres[_6][1], Membres[position][1]; 
+            return Membres[position][1]; 
         }else{
             Membres[position][1] = Membres[position][1] + prize;
             printInfo("simple", "Augmentation ! la prime de " + Membres[position][0]+ " est désormais de " + Membres[position][1] + " Berrys !");

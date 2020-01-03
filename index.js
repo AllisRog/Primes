@@ -114,23 +114,23 @@ bot.on('message', message=>{
         }
         return valid_2;
     }
-    function isCapable(ID){
+    function isCapable(message.guild.member.roles){
         var valid = false;
         //const memberId = message.guild.member.get(Membres[_7][2]);
-        switch (ID){
-            case ID.has(Roles[3][1]):
+        switch (message.guild.member.roles){
+            case message.guild.member.roles.has(Roles[3][1]):
                 valid = true;
                 break;
-            case ID.has(Roles[4][1]):
+            case message.guild.member.roles.has(Roles[4][1]):
                 valid = true;
                 break;  
-            case ID.has(Roles[5][1]):
+            case message.guild.member.roles.has(Roles[5][1]):
                 valid = true;
                 break;
-            case ID.has(Roles[6][1]):
+            case message.guild.member.roles.has(Roles[6][1]):
                 valid = true;
                 break;
-            case ID.has(Roles[7][1]):
+            case message.guild.member.roles.has(Roles[7][1]):
                 valid = true;
                 break;   
             default:

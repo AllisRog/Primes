@@ -179,8 +179,8 @@ bot.on('message', message=>{
                 }
                 var finalprize = updPrize/prizeIndex;
                 for (let _6 = 0; _6 < Membres.length; _6++) {
-                    if (Membres[_5][3] == Membres[position][3]){
-                        Membres[_5][1] = Membres[_5][1] + finalprize;
+                    if (Membres[_6][3] == Membres[position][3]){
+                        Membres[_6][1] = Membres[_5][1] + finalprize;
                         MsgfinalPirates += "Augmentation ! la prime de " + Membres[_5][0]+ " est désormais de " + Membres[_5][1] + " Berrys !\n";
                     }
                 }
@@ -248,7 +248,8 @@ bot.on('message', message=>{
                     } 
                 }if (!args[1]){
                     printInfo("reply", "Précise le nom de ton équipage dans ta commande.")
-                }if (args[1]){
+                }if (args[1] && !message.member.roles.has(Roles[3][1]) || !message.member.roles.has(Roles[4][1]) || !message.member.roles.has(Roles[5][1]) 
+                || !message.member.roles.has(Roles[6][1]) || !message.member.roles.has(Roles[7][1])){
                     printInfo("reply", "Commencez par devenir Capitaine ou supérieur afin de faire ça.")
                 }
             }
@@ -262,7 +263,7 @@ bot.on('message', message=>{
                                 if (args[2]){
                                     if (args[2] != Membres[index][3]){
                                         for (let _1 = 0; _1 < Membres.length; _1++) {
-                                            if (Membres[_1][3] == Membres[index][3]){
+                                            while (Membres[_1][3] == Membres[index][3]){
                                                 Membres[_1][3] = args[2];
                                             }   
                                         }

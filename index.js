@@ -181,14 +181,14 @@ bot.on('message', message=>{
                 for (let _6 = 0; _6 < Membres.length; _6++) {
                     if (Membres[_6][3] == Membres[position][3]){
                         Membres[_6][1] = Membres[_6][1] + finalprize;
-                        MsgfinalPirates += "Augmentation ! la prime de " + Membres[_5][0]+ " est désormais de " + Membres[_5][1] + " Berrys !\n";
+                        MsgfinalPirates += "Augmentation ! la prime de " + Membres[_6][0]+ " est désormais de " + Membres[_5][1] + " Berrys !\n";
                     }
                 }
             }
             checkRoles(Membres);
             printInfo("simple", Msgfinal);
             printInfo("simple", MsgfinalPirates);
-            return Membres[_5][1], Membres[position][1]; 
+            return Membres[_6][1], Membres[position][1]; 
         }else{
             Membres[position][1] = Membres[position][1] + prize;
             printInfo("simple", "Augmentation ! la prime de " + Membres[position][0]+ " est désormais de " + Membres[position][1] + " Berrys !");

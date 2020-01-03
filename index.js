@@ -136,7 +136,7 @@ bot.on('message', message=>{
             default:
                 valid = false;         
             }
-        
+        console.log(valid);
         return valid;
     }
     // Fonction checkRoles : Permet de changer le rôle d'un utilisateur en fonction de sa prime.

@@ -200,7 +200,9 @@ bot.on('message', message=>{
         case 'equipage':
             Msg = "";
             var arg = message.author.id;
+            console.log("step one");
             if (message.member.roles.has(Roles[3][1])){
+                 console.log("step txo");
                 if (args[1] && args[1] != "quitte"){
                     for (let index = 0; index < Membres.length; index++) {
                         if (Membres[index][2]==message.member.id){

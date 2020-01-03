@@ -161,7 +161,7 @@ bot.on('message', message=>{
         var Msgfinal = "";
         var MsgfinalPirates = "";
         if (Membres[position][3]!=""){
-            if(isCapable(message.guild.member.roles)){
+            if(message.member.roles.has(Roles[3][1])){
                 updPrize = prize / 2;
                 Membres[position][1] = Membres[position][1] + updPrize;
                 Msgfinal += "Augmentation ! la prime de " + Membres[position][0]+ " est désormais de " + Membres[position][1] + " Berrys !\n";
@@ -200,7 +200,7 @@ bot.on('message', message=>{
         case 'equipage':
             Msg = "";
             var arg = message.author.id;
-            if (isCapable(arg)){
+            if (message.member.roles.has(Roles[3][1])){
                 if (args[1] && args[1] != "quitte"){
                     for (let index = 0; index < Membres.length; index++) {
                         if (Membres[index][2]==message.member.id){
@@ -248,7 +248,7 @@ bot.on('message', message=>{
             switch(args[1]){
                 case "change":
                     var arg = message.author.id;
-                    if (isCapable(arg)){
+                    if (message.member.roles.has(Roles[3][1])){
                         for (let index = 0; index < Membres.length; index++) {
                             if (message.member.id == Membres[index][2]){
                                 if (args[2]){
@@ -275,7 +275,7 @@ bot.on('message', message=>{
                         if (message.member.id == Membres[index][2]){
                             for (let _3 = 0; _3 < Membres.length; _3++) {
                                 //const member1 = message.guild.members.get(Membres[_3][2]);
-                                if (!isCapable(arg)){
+                                if (!message.member.roles.has(Roles[3][1])){
                                     if (Membres[index][3]!=""){
                                         printInfo("simple", Membres[index][0] + " a quitté l'équipage " + Membres[index][3] +".");
                                         if (!hasCaptain(Membres, Membres[index][3])) {
@@ -312,7 +312,7 @@ bot.on('message', message=>{
                 break;
                 case "vire":
                     var arg = message.author.id;
-                    if (isCapable(arg)){
+                    if (message.member.roles.has(Roles[3][1]){
                         for (let index = 0; index < Membres.length; index++) {
                             if (args[2] == Membres[index][0]){
                                 for (let index_1 = 0; index_1 < Membres.length; index_1++) {
@@ -414,5 +414,4 @@ bot.on('message', message=>{
             }    
     }
 })
-bot.login(token);
 bot.login(process.env.BOT_TOKEN);

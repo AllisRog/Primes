@@ -167,7 +167,7 @@ bot.on('message', message=>{
         }
     }
     
-    function hasCrew(Membres, prize, ID){
+        function hasCrew(Membres, prize, ID){
         //const member = message.guild.members.get(Membres[position][2]);
         var prizeIndex = 0;
         var Msgfinal = "";
@@ -189,13 +189,15 @@ bot.on('message', message=>{
             for (let _6 = 0; _6 < Membres.length; _6++) {
                 if (Membres[_6][3] == Membres[getMember(Membres, ID, "pos", args[1])][3]){
                     Membres[_6][1] = Membres[_5][1] + finalprize;
-                    MsgfinalPirates += "Augmentation ! la prime de " + Membres[_5][0]+ " est désormais de " + Membres[_5][1] + " Berrys !\n";                    }
+                    MsgfinalPirates += "Augmentation ! la prime de " + Membres[_5][0]+ " est désormais de " + Membres[_5][1] + " Berrys !\n"; 
+                    return Membres[_6][1];                   
+                }
             }
         }
         checkRoles(Membres);
         printInfo("simple", Msgfinal);
         printInfo("simple", MsgfinalPirates);
-        return Membres[_5][1], Membres[getMember(Membres, ID, "pos", args[1])][1]; 
+        return Membres[getMember(Membres, ID, "pos", args[1])][1]; 
         }
         else{
             Membres[getMember(Membres, ID, "pos", args[1])][1] = Membres[getMember(Membres, ID, "pos", args[1])][1] + prize;

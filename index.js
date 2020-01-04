@@ -5,13 +5,13 @@ const token = 'NjU0MjM4ODc3NDkzNDkzNzcw.XhD7HA.9uBQBxlOx1EcSFi80sAq4Wdvj8s';
 const PREFIX = '!';
 
 // Liste des noms, primes, codes Discord et Equipages.  
-Membres = [["ener", 273000, "443703085253132288", ""], ["zoro", 179000, "652940533253144579", "suce"],
-["mihawk", 98000, "526048864919355392", ""], ["shanks", 728000, "342435810965979138", ""],
+Membres = [["ener", 273000, "443703085253132288", ""], ["zoro", 179000, "652940533253144579", "MugiwaraTest"],
+["mihawk", 98000, "526048864919355392", ""], ["shanks", 728000, "342435810965979138", "MugiwaraTest"],
 ["chopper", 112000, "391581984956350465", ""],["sugar", 3, "654047627817779210", ""], 
-["katakuri", 215000, "326811822726447115", ""],["bellamy", 25000, "404639144724398080", "suce"], 
+["katakuri", 215000, "326811822726447115", ""],["bellamy", 25000, "404639144724398080", "MugiwaraTest"], 
 ["arlong", 0, "527604578506637332", ""],["edwardnewgate", 0, "469042136311136256", ""], 
 ["alvida", 50000, "653621701359173672", ""],["sanji", 75000, "653603212963741706", ""], 
-["benbeckman", 58325, "480006189070155787", "suce"], ["pedro", 0, "269890311029915648", ""],
+["benbeckman", 58325, "480006189070155787", "MugiwaraTest"], ["pedro", 0, "269890311029915648", ""],
 ["usopp", 0, "573111845666291714", ""]];
 Membres.sort(function(a,b){
     return b[1]-a[1]
@@ -167,21 +167,21 @@ bot.on('message', message=>{
         }
     }
     
-        function hasCrew(Membres, prize, ID){
+    function hasCrew(Membres, prize, ID){
         //const member = message.guild.members.get(Membres[position][2]);
         var prizeIndex = 0;
         var Msgfinal = "";
         var MsgfinalPirates = "";
         if (getMember(Membres, ID, "equipage_check", args[1])){
-            printInfo("simple", "Il y en a un !");
+            updPrize = prize / 2;
             if(hasRole(message.guild.members.get(ID))){
-                updPrize = prize / 2;
                 Membres[getMember(Membres, ID, "pos", args[1])][1] += updPrize;
                 Msgfinal += "Augmentation ! la prime de " + Membres[getMember(Membres, ID, "pos", args[1])][0]+ " est désormais de " + 
                 Membres[getMember(Membres, ID, "pos", args[1])][1] + " Berrys !\n";
                 for (let _5 = 0; _5 < Membres.length; _5++) {
                     if (Membres[_5][3] == Membres[getMember(Membres, ID, "pos", args[1])][3]){
                         prizeIndex ++;
+                        return prizeIndex;
                     }
                     
                 }
@@ -190,13 +190,12 @@ bot.on('message', message=>{
                 if (Membres[_6][3] == Membres[getMember(Membres, ID, "pos", args[1])][3]){
                     Membres[_6][1] = Membres[_5][1] + finalprize;
                     MsgfinalPirates += "Augmentation ! la prime de " + Membres[_5][0]+ " est désormais de " + Membres[_5][1] + " Berrys !\n"; 
-                    return Membres[_6][1];                   
+                    return Membres[_6][1], MsgfinalPirates;                   
                 }
-            }
+            }printInfo("simple", MsgfinalPirates);
         }
         checkRoles(Membres);
         printInfo("simple", Msgfinal);
-        printInfo("simple", MsgfinalPirates);
         return Membres[getMember(Membres, ID, "pos", args[1])][1]; 
         }
         else{

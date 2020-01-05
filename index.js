@@ -131,7 +131,8 @@ bot.on('message', message=>{
         for (let roleIdx = 3; roleIdx < 9; roleIdx++) {
             if(member.roles.has(Roles[roleIdx][1])){
                 roleCheck = true;
-                break   
+                printInfo("simple", "true");
+                break;   
             }
         }
         return roleCheck;
@@ -145,7 +146,7 @@ bot.on('message', message=>{
                     {
                         if (!member1.roles.has(Roles[index_sub][1])){
                             assignRole(member1, Roles[index_sub][1]);
-                            printInfo("identification", "<@" + Membres[index][2] + ">" + ", tu es devenu " + Roles[index_sub][0])
+                            printInfo("identification", "<@" + Membres[index][2] + ">" + ", tu es devenu " + Roles[index_sub][0]);
                         }
                 }
                 

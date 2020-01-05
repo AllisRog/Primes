@@ -179,7 +179,7 @@ bot.on('message', message=>{
                         }
                     }                
                 }return capIdx;  
-
+            }
     }
     function Bounty(Membres, prize, arg_s){
         var BntyID = getMember(Membres, 0, "arg_pos", arg_s);
@@ -187,6 +187,10 @@ bot.on('message', message=>{
         var newPrize = prize;
         if (getMember(Membres, file, "equipage_check", arg_s)){
             newPrize = prize / getEquipage(Membres, file, "numberOfCptn");
+            Membres[BntyID][1] += prize;
+            printInfo("simple", "Augmentation ! la prime de " + Membres[BntyID][0]+ " est désormais de " 
+            + Membres[BntyID][1] + " Berrys !");
+            checkRoles(Membres);
             if(hasRole(message.guild.member.get(file))){
                 Membres[BntyID][1] += newPrize;
                 printInfo("simple", "Augmentation ! la prime de " + Membres[BntyID][0]+ " est désormais de " 
@@ -194,6 +198,7 @@ bot.on('message', message=>{
                 checkRoles(Membres);
                 return Membres[BntyID][1];
             }
+            return Membres[BntyID][1];
         }else{
             Membres[BntyID][1] += prize;
             printInfo("simple", "Augmentation ! la prime de " + Membres[BntyID][0]+ " est désormais de " 
@@ -345,7 +350,7 @@ bot.on('message', message=>{
                         //addBounty(Membres, parseInt(args[3]), message.member.id, args[1]);
                         //hasCrew(Membres, parseInt(args[3]), Membres[getMember(Membres, message.member.id, "arg_pos", args[1])][2]);
                 }
-            }         
-    }       }
+        }    
+    }         
 })
 bot.login(process.env.BOT_TOKEN);

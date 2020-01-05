@@ -278,7 +278,7 @@ bot.on('message', message=>{
     switch(args[0]){
         
         case 'test':
-            if (hasRole(message.guild.member.get(message.author.id))){
+            if (hasRole(message.guild.member.get("id", message.author.id))){
                 printInfo("simple", "you have a right role.");
             }
             break;

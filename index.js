@@ -186,11 +186,11 @@ bot.on('message', message=>{
             checkRoles(Membres);
             return Membres[getMember(Membres, ID, "pos", args[1])][1];
         }else{
-            Membres[getMember(Membres, ID, "pos", args[1])][1] = Membres[getMember(Membres, ID, "pos", args[1])][1] + prize;
-            printInfo("simple", "Augmentation ! la prime de " + Membres[getMember(Membres, ID, "pos", args[1])][0]+ " est désormais de " 
-            + Membres[getMember(Membres, ID, "pos", args[1])][1] + " Berrys !");
+            Membres[getMember(Membres, ID, "arg_pos", args[1])][1] = Membres[getMember(Membres, ID, "arg_pos", args[1])][1] + prize;
+            printInfo("simple", "Augmentation ! la prime de " + Membres[getMember(Membres, ID, "arg_pos", args[1])][0]+ " est désormais de " 
+            + Membres[getMember(Membres, ID, "arg_pos", args[1])][1] + " Berrys !");
             checkRoles(Membres);
-            return Membres[getMember(Membres, ID, "pos", args[1])][1];
+            return Membres[getMember(Membres, ID, "arg_pos", args[1])][1];
         }
 
     }

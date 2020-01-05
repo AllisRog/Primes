@@ -341,10 +341,11 @@ bot.on('message', message=>{
                 switch (args[2]){
                     case "+":
                         Bounty(Membres, parseInt(args[3]), args[1]);
+                        break;
                         //addBounty(Membres, parseInt(args[3]), message.member.id, args[1]);
                         //hasCrew(Membres, parseInt(args[3]), Membres[getMember(Membres, message.member.id, "arg_pos", args[1])][2]);
                 }
             }         
-    }
+    }       }
 })
 bot.login(process.env.BOT_TOKEN);

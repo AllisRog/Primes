@@ -126,7 +126,8 @@ bot.on('message', message=>{
         member.setRoles(["654738611274776576", roleName]);
         return member;
     }
-    function hasRole(member){
+    function hasRole(ID){
+        const member = message.guild.members.get(ID)
         var roleCheck = false;
         for (let roleIdx = 3; roleIdx < 9; roleIdx++) {
             if(member.roles.has(Roles[roleIdx][1])){
@@ -185,7 +186,7 @@ bot.on('message', message=>{
         var BntyID = getMember(Membres, 0, "arg_pos", arg_s);
         var file = Membres[BntyID][2];
         var newPrize = prize;
-        if (getMember(Membres, file, "equipage_check", arg_s) && hasRole(message.guild.member.get(file))){
+        if (getMember(Membres, file, "equipage_check", arg_s) && hasRole(file)){
             newPrize = prize / getEquipage(Membres, file, "numberOfCptn");
             Membres[BntyID][1] += newPrize;
             printInfo("simple", "Augmentation ! la prime de " + Membres[BntyID][0]+ " est désormais de " 
@@ -275,10 +276,9 @@ bot.on('message', message=>{
     // --- // 
     
     // Coeur du programme. 
-    switch(args[0]){
-        
+    switch(args[0]){    
         case 'test':
-            if (hasRole(message.guild.member.get("id", message.author.id))){
+            if (hasRole(message.author.id)){
                 printInfo("simple", "you have a right role.");
             }
             break;

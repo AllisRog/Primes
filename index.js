@@ -1,7 +1,6 @@
 // Mise en place système. 
 const Discord = require('discord.js');
 const bot = new Discord.Client();
-const token = 'NjU0MjM4ODc3NDkzNDkzNzcw.XhD7HA.9uBQBxlOx1EcSFi80sAq4Wdvj8s';
 const PREFIX = '!';
 
 // Liste des noms, primes, codes Discord et Equipages.  
@@ -166,8 +165,36 @@ bot.on('message', message=>{
             }
         }
     }
-    
-        function hasCrew(Membres, prize, ID){
+    function addBounty(Membres, bounty, ID){
+        var capIndex = 0;
+        var capPrize = prize;
+        var prtPrize = prize;
+        let Md_cns = [getMember(Membres, ID, "equipage_check", args[1]), 
+        hasRole(message.guild.members.get(ID))];
+        if (Md_cns.indexOf(false)===-1){
+            for (let bntyIdx = 0; bntyIdx < Membres.length; bntyIdx++) {
+                if(Membres[bntyIdx][3]==getMember(Membres, ID, "equipage_name", args[1])){
+                    if(hasRole(message.guild.members.get(Membres[bntyIdx][2]))){
+                        capIndex++;
+                    }                  
+                }               
+            }
+            capPrize = prize / capIndex+1;
+            Membres[getMember(Membres, ID, "pos", args[1])][1] = Membres[getMember(Membres, ID, "pos", args[1])][1] + capPrize;
+            printInfo("simple", "Augmentation ! la prime de " + Membres[getMember(Membres, ID, "pos", args[1])][0]+ " est désormais de " 
+            + Membres[getMember(Membres, ID, "pos", args[1])][1] + " Berrys !");
+            checkRoles(Membres);
+            return Membres[getMember(Membres, ID, "pos", args[1])][1];
+        }else{
+            Membres[getMember(Membres, ID, "pos", args[1])][1] = Membres[getMember(Membres, ID, "pos", args[1])][1] + prize;
+            printInfo("simple", "Augmentation ! la prime de " + Membres[getMember(Membres, ID, "pos", args[1])][0]+ " est désormais de " 
+            + Membres[getMember(Membres, ID, "pos", args[1])][1] + " Berrys !");
+            checkRoles(Membres);
+            return Membres[getMember(Membres, ID, "pos", args[1])][1];
+        }
+
+    }
+    /*function hasCrew(Membres, prize, ID){
         //const member = message.guild.members.get(Membres[position][2]);
         var prizeIndex = 0;
         var Msgfinal = "";
@@ -207,7 +234,7 @@ bot.on('message', message=>{
             return Membres[getMember(Membres, ID, "pos", args[1])][1];
         }
 
-    }
+    }*/
     // --- // 
     
     // Coeur du programme. 
@@ -274,7 +301,8 @@ bot.on('message', message=>{
             if(getMember(Membres, message.member.id, "arg", args[1])){
                 switch (args[2]){
                     case "+":
-                        hasCrew(Membres, parseInt(args[3]), Membres[getMember(Membres, message.member.id, "arg_pos", args[1])][2]);
+                        addBounty(Membres, parseInt(args[3]), message.member.id);
+                        //hasCrew(Membres, parseInt(args[3]), Membres[getMember(Membres, message.member.id, "arg_pos", args[1])][2]);
                 }
             }         
     }

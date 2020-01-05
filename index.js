@@ -173,7 +173,7 @@ bot.on('message', message=>{
                 for (let mbrIdx_en = 0; mbrIdx_en < Membres.length; mbrIdx_en++) {
                     if (Membres[mbrIdx_en][2]==ID && Membres[mbrIdx_en][3]!=""){
                         for (let mbrIdx_nc = 0; mbrIdx_nc < Membres.length; mbrIdx_nc++) {
-                            if (Membres[mbrIdx_nc][3]==Membres[mbrIdx_en][3] && hasRole(message.guild.members.get(ID)){
+                            if (Membres[mbrIdx_nc][3]==Membres[mbrIdx_en][3] && hasRole(message.guild.members.get(ID))){
                                 capIdx++;
                             }        
                         }

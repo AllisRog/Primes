@@ -165,32 +165,34 @@ bot.on('message', message=>{
             }
         }
     }
-    function addBounty(Membres, prize, ID){
-        var capIndex = 0;
+function addBounty(Membres, bounty, ID, arg){
+        var capIndex = 1;
         var capPrize = prize;
         var prtPrize = prize;
-        let Md_cns = [getMember(Membres, ID, "equipage_check", args[1]), 
-        hasRole(message.guild.members.get(ID))];
+        var concernedId = getMember(Membres, ID, "arg_pos", arg);
+        var memberID = Membres[concernedId][2];
+        let Md_cns = [getMember(Membres, memberID, "equipage_check", arg), 
+        hasRole(message.guild.members.get(memberId))];
         if (Md_cns.indexOf(false)===-1){
             for (let bntyIdx = 0; bntyIdx < Membres.length; bntyIdx++) {
-                if(Membres[bntyIdx][3]==getMember(Membres, ID, "equipage_name", args[1])){
+                if(Membres[bntyIdx][3]==getMember(Membres, memberID, "equipage_name", args[1])){
                     if(hasRole(message.guild.members.get(Membres[bntyIdx][2]))){
                         capIndex++;
                     }                  
                 }               
             }
             capPrize = prize / capIndex+1;
-            Membres[getMember(Membres, ID, "arg_pos", args[1])][1] = Membres[getMember(Membres, ID, "arg_pos", args[1])][1] + capPrize;
-            printInfo("simple", "Augmentation ! la prime de " + Membres[getMember(Membres, ID, "arg_pos", args[1])][0]+ " est désormais de " 
-            + Membres[getMember(Membres, ID, "arg_pos", args[1])][1] + " Berrys !");
+            Membres[getMember(Membres, memberID, "pos", args[1])][1] = Membres[getMember(Membres, memberID, "pos", args[1])][1] + capPrize;
+            printInfo("simple", "Augmentation ! la prime de " + Membres[getMember(Membres, memberID, "pos", args[1])][0]+ " est désormais de " 
+            + Membres[getMember(Membres, memberID, "pos", args[1])][1] + " Berrys !");
             checkRoles(Membres);
-            return Membres[getMember(Membres, ID, "arg_pos", args[1])][1];
+            return Membres[getMember(Membres, memberID, "pos", args[1])][1];
         }else{
-            Membres[getMember(Membres, ID, "arg_pos", args[1])][1] = Membres[getMember(Membres, ID, "arg_pos", args[1])][1] + prize;
-            printInfo("simple", "Augmentation ! la prime de " + Membres[getMember(Membres, ID, "arg_pos", args[1])][0]+ " est désormais de " 
-            + Membres[getMember(Membres, ID, "arg_pos", args[1])][1] + " Berrys !");
+            Membres[getMember(Membres, memberID, "pos", args[1])][1] = Membres[getMember(Membres, memberID, "pos", args[1])][1] + prize;
+            printInfo("simple", "Augmentation ! la prime de " + Membres[getMember(Membres, memberID, "pos", args[1])][0]+ " est désormais de " 
+            + Membres[getMember(Membres, memberID, "pos", args[1])][1] + " Berrys !");
             checkRoles(Membres);
-            return Membres[getMember(Membres, ID, "arg_pos", args[1])][1];
+            return Membres[getMember(Membres, memberID, "pos", args[1])][1];
         }
 
     }

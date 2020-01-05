@@ -185,9 +185,6 @@ bot.on('message', message=>{
         var BntyID = getMember(Membres, 0, "arg_pos", arg_s);
         var file = Membres[BntyID][2];
         var newPrize = prize;
-        if (hasRole(message.guild.member.get(file))){
-            console.log("ok!");
-        }
         if (getMember(Membres, file, "equipage_check", arg_s) && hasRole(message.guild.member.get(file))){
             newPrize = prize / getEquipage(Membres, file, "numberOfCptn");
             Membres[BntyID][1] += newPrize;

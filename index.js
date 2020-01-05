@@ -185,19 +185,12 @@ bot.on('message', message=>{
         var BntyID = getMember(Membres, 0, "arg_pos", arg_s);
         var file = Membres[BntyID][2];
         var newPrize = prize;
-        if (getMember(Membres, file, "equipage_check", arg_s)){
+        if (getMember(Membres, file, "equipage_check", arg_s) && hasRole(message.guild.member.get(file))){
             newPrize = prize / getEquipage(Membres, file, "numberOfCptn");
-            Membres[BntyID][1] += prize;
+            Membres[BntyID][1] += newPrize;
             printInfo("simple", "Augmentation ! la prime de " + Membres[BntyID][0]+ " est désormais de " 
             + Membres[BntyID][1] + " Berrys !");
             checkRoles(Membres);
-            if(hasRole(message.guild.member.get(file))){
-                Membres[BntyID][1] += newPrize;
-                printInfo("simple", "Augmentation ! la prime de " + Membres[BntyID][0]+ " est désormais de " 
-                + Membres[BntyID][1] + " Berrys !");
-                checkRoles(Membres);
-                return Membres[BntyID][1];
-            }
             return Membres[BntyID][1];
         }else{
             Membres[BntyID][1] += prize;

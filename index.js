@@ -165,7 +165,7 @@ bot.on('message', message=>{
             }
         }
     }
-function addBounty(Membres, bounty, ID, arg){
+function addBounty(Membres, prize, ID, arg){
         var capIndex = 1;
         var capPrize = prize;
         var prtPrize = prize;

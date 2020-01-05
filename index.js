@@ -6,7 +6,7 @@ const PREFIX = '!';
 // Liste des noms, primes, codes Discord et Equipages.  
 Membres = [["ener", 273000, "443703085253132288", ""], ["zoro", 179000, "652940533253144579", "MugiwaraTest"],
 ["mihawk", 98000, "526048864919355392", ""], ["shanks", 728000, "342435810965979138", "MugiwaraTest"],
-["chopper", 112000, "391581984956350465", "MugiwaraTest"],["sugar", 3, "654047627817779210", ""], 
+["chopper", 112000, "391581984956350465", ""],["sugar", 3, "654047627817779210", ""], 
 ["katakuri", 215000, "326811822726447115", ""],["bellamy", 25000, "404639144724398080", "MugiwaraTest"], 
 ["arlong", 0, "527604578506637332", ""],["edwardnewgate", 0, "469042136311136256", ""], 
 ["alvida", 50000, "653621701359173672", ""],["sanji", 75000, "653603212963741706", ""], 
@@ -131,8 +131,7 @@ bot.on('message', message=>{
         for (let roleIdx = 3; roleIdx < 9; roleIdx++) {
             if(member.roles.has(Roles[roleIdx][1])){
                 roleCheck = true;
-                printInfo("simple", "true");
-                break;   
+                break   
             }
         }
         return roleCheck;
@@ -146,7 +145,7 @@ bot.on('message', message=>{
                     {
                         if (!member1.roles.has(Roles[index_sub][1])){
                             assignRole(member1, Roles[index_sub][1]);
-                            printInfo("identification", "<@" + Membres[index][2] + ">" + ", tu es devenu " + Roles[index_sub][0]);
+                            printInfo("identification", "<@" + Membres[index][2] + ">" + ", tu es devenu " + Roles[index_sub][0])
                         }
                 }
                 
@@ -278,6 +277,11 @@ bot.on('message', message=>{
     // Coeur du programme. 
     switch(args[0]){
         
+        case 'test':
+            if (hasRole(message.guild.member.get(message.author.id))){
+                printInfo("simple", "you have a right role.");
+            }
+            break;
         // Fonctionnalité Transfert : Permet de transferer une partie de sa bourse vers un autre pirate. Ok(3/1/20)
         case 'transfert':
             let Tf_cns = [args[2]!=null,parseInt(args[2])>0,getMember(Membres, message.member.id, "Nhimself", args[1])==1,

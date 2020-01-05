@@ -6,7 +6,7 @@ const PREFIX = '!';
 // Liste des noms, primes, codes Discord et Equipages.  
 Membres = [["ener", 273000, "443703085253132288", ""], ["zoro", 179000, "652940533253144579", "MugiwaraTest"],
 ["mihawk", 98000, "526048864919355392", ""], ["shanks", 728000, "342435810965979138", "MugiwaraTest"],
-["chopper", 112000, "391581984956350465", ""],["sugar", 3, "654047627817779210", ""], 
+["chopper", 112000, "391581984956350465", "MugiwaraTest"],["sugar", 3, "654047627817779210", ""], 
 ["katakuri", 215000, "326811822726447115", ""],["bellamy", 25000, "404639144724398080", "MugiwaraTest"], 
 ["arlong", 0, "527604578506637332", ""],["edwardnewgate", 0, "469042136311136256", ""], 
 ["alvida", 50000, "653621701359173672", ""],["sanji", 75000, "653603212963741706", ""], 
@@ -185,6 +185,7 @@ bot.on('message', message=>{
         var BntyID = getMember(Membres, 0, "arg_pos", arg_s);
         var file = Membres[BntyID][2];
         var newPrize = prize;
+        console.log(hasRole(message.guild.member.get(file)));
         if (getMember(Membres, file, "equipage_check", arg_s) && hasRole(message.guild.member.get(file))){
             newPrize = prize / getEquipage(Membres, file, "numberOfCptn");
             Membres[BntyID][1] += newPrize;

@@ -60,19 +60,6 @@ function getCrew(Membres){
 // Fonction getMember : Permet de d'assigner l'ID de la personne à son "fichier".
 function getMember(Membres, ID, style, arg){
     switch (style){
-        case 'equipage_check':
-            for (let mbrIdx_ec = 0; mbrIdx_ec < Membres.length; mbrIdx_ec++) {
-                if (Membres[mbrIdx_ec][2]==ID && Membres[mbrIdx_ec][3]!=""){
-                    return true;
-                }               
-            }
-        case 'equipage_name':
-            for (let mbrIdx_en = 0; mbrIdx_en < Membres.length; mbrIdx_en++) {
-                if (Membres[mbrIdx_en][2]==ID && Membres[mbrIdx_en][3]!=""){
-                    return Membres[mbrIdx_en][3];
-                }
-                
-            }  
         case 'Nhimself':
             for (let mbrIdx_n = 0; mbrIdx_n < Membres.length; mbrIdx_n++) {
                 if (Membres[mbrIdx_n][0]==arg){
@@ -165,7 +152,57 @@ bot.on('message', message=>{
             }
         }
     }
-function addBounty(Membres, prize, ID, arg){
+
+    function getEquipage(Membres, ID, style){
+        var capIdx = 0;
+        switch (style){
+            case "equipage_check":
+                for (let mbrIdx_ec = 0; mbrIdx_ec < Membres.length; mbrIdx_ec++) {
+                    if (Membres[mbrIdx_ec][2]==ID && Membres[mbrIdx_ec][3]!=""){
+                        return true;
+                    }               
+                }
+            case "equipage_name":
+                for (let mbrIdx_en = 0; mbrIdx_en < Membres.length; mbrIdx_en++) {
+                    if (Membres[mbrIdx_en][2]==ID && Membres[mbrIdx_en][3]!=""){
+                        return Membres[mbrIdx_en][3];
+                    }
+                    
+                }  
+            case "numberOfCptn":
+                for (let mbrIdx_en = 0; mbrIdx_en < Membres.length; mbrIdx_en++) {
+                    if (Membres[mbrIdx_en][2]==ID && Membres[mbrIdx_en][3]!=""){
+                        for (let mbrIdx_nc = 0; mbrIdx_nc < Membres.length; mbrIdx_nc++) {
+                            if (Membres[mbrIdx_nc][3]==Membres[mbrIdx_en][3] && hasRole(message.guild.members.get(ID)){
+                                capIdx++;
+                            }        
+                        }
+                    }                
+                }return capIdx;  
+
+    }
+    function Bounty(Membres, prize, arg_s){
+        var BntyID = getMember(Membres, 0, "arg_pos", arg_s);
+        var file = Membres[BntyID][2];
+        var newPrize = prize;
+        if (getMember(Membres, file, "equipage_check", arg_s)){
+            newPrize = prize / getEquipage(Membres, file, "numberOfCptn");
+            if(hasRole(message.guild.member.get(file))){
+                Membres[BntyID][1] += newPrize;
+                printInfo("simple", "Augmentation ! la prime de " + Membres[BntyID][0]+ " est désormais de " 
+                + Membres[BntyID][1] + " Berrys !");
+                checkRoles(Membres);
+                return Membres[BntyID][1];
+            }
+        }else{
+            Membres[BntyID][1] += prize;
+            printInfo("simple", "Augmentation ! la prime de " + Membres[BntyID][0]+ " est désormais de " 
+            + Membres[BntyID][1] + " Berrys !");
+            checkRoles(Membres);
+            return Membres[BntyID][1];
+        }      
+    }
+    function addBounty(Membres, prize, ID, arg){
         var capIndex = 1;
         var capPrize = prize;
         var prtPrize = prize;
@@ -300,10 +337,11 @@ function addBounty(Membres, prize, ID, arg){
             if(!message.guild.members.get("391581984956350465")) return message.channel.send("Tu n'as pas vraiment le droit de faire ça...")
             /*for (let oudex  = 0; oudex < Membres.length; oudex++) {
                 if (args[1] == Membres[oudex][0]){*/
-            if(getMember(Membres, message.member.id, "arg", args[1])){
+            if(getMember(Membres, message.member.id, "arg", args[1]) && args[3]){
                 switch (args[2]){
                     case "+":
-                        addBounty(Membres, parseInt(args[3]), message.member.id);
+                        Bounty(Membres, parseInt(args[3]), args[1]);
+                        //addBounty(Membres, parseInt(args[3]), message.member.id, args[1]);
                         //hasCrew(Membres, parseInt(args[3]), Membres[getMember(Membres, message.member.id, "arg_pos", args[1])][2]);
                 }
             }         
